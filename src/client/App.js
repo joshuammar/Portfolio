@@ -1,22 +1,40 @@
 import React, { Component } from 'react';
 import './app.css';
-import ReactImage from './react.png';
+import {
+  Row, Col, Menu, Icon, Avatar,
+} from 'antd';
+import ExampleComponent from 'react-rounded-image';
 
+import photo from './test.jpeg';
 export default class App extends Component {
-  state = { username: null };
-
   componentDidMount() {
-    fetch('/api/getUsername')
-      .then(res => res.json())
-      .then(user => this.setState({ username: user.username }));
   }
 
   render() {
-    const { username } = this.state;
     return (
       <div>
-        {username ? <h1>{`Hello ${username}`}</h1> : <h1>Loading.. please wait!</h1>}
-        <img src={ReactImage} alt="react" />
+        <div>
+          <Menu align="left" mode="horizontal">
+            <Menu.Item>
+          Joshua Martin
+            </Menu.Item>
+            <Menu.Item>
+          About
+            </Menu.Item>
+            <Menu.Item>
+          Resume
+            </Menu.Item>
+          </Menu>
+        </div>
+        <div>
+          <Row>
+            <Col span={8}>
+              
+              <img src={photo} alt="test" />
+            </Col>
+            <Col span={16}>col-12</Col>
+          </Row>
+        </div>
       </div>
     );
   }
